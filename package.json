@@ -1,0 +1,47 @@
+{
+  "name": "claude-code-devlog",
+  "version": "0.1.0",
+  "description": "Claude Code 세션 기록을 프로젝트별 마크다운 개발 로그로 바꾸는 Stop 훅과 CLI",
+  "keywords": [
+    "claude-code",
+    "hooks",
+    "devlog",
+    "cli"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hidudu0/claude-code-devlog.git"
+  },
+  "type": "module",
+  "bin": {
+    "cc-devlog": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc",
+    "lint": "eslint .",
+    "test": "node --test \"test/*.test.ts\"",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "eslint": "^10.14.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.2"
+  }
+}

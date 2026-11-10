@@ -1,0 +1,10 @@
+{"type": "summary", "cwd": "/work/app", "aiTitle": "초안 제목"}
+{"type": "user", "cwd": "/work/app", "timestamp": "2026-11-06T12:04:34.730Z", "message": {"role": "user", "content": [{"type": "text", "text": "<ide_opened_file>열린 파일 안내</ide_opened_file>"}, {"type": "text", "text": "로그인 버그 고쳐줘. 키는 sk-abcdefghijklmnopqrstuv 이고 token=abcdef1234567890 야"}, {"type": "image", "source": {}}]}}
+{"type": "assistant", "timestamp": "2026-11-06T12:04:40.000Z", "message": {"content": [{"type": "thinking", "thinking": "속생각"}, {"type": "text", "text": "원인 찾는 중."}, {"type": "tool_use", "name": "Edit", "input": {"file_path": "/work/app/src/login.ts"}}, {"type": "tool_use", "name": "Write", "input": {"file_path": "/work/app/src/login.ts"}}, {"type": "tool_use", "name": "Bash", "input": {"command": "npm test", "description": "테스트 실행"}}]}}
+{"type": "user", "timestamp": "2026-11-06T12:04:41.000Z", "toolUseResult": {}, "message": {"content": [{"type": "tool_result", "content": "도구 결과"}]}}
+{"type": "assistant", "isSidechain": true, "timestamp": "2026-11-06T12:04:42.000Z", "message": {"content": [{"type": "text", "text": "서브에이전트 답"}]}}
+{"type": "user", "isMeta": true, "timestamp": "2026-11-06T12:04:43.000Z", "message": {"content": "메타 메시지"}}
+{"type": "assistant", "timestamp": "2026-11-06T12:05:00.000Z", "message": {"content": [{"type": "text", "text": "고쳤습니다."}]}}
+{"type": "user", "timestamp": "2026-11-06T12:10:00.000Z", "message": {"content": "<command-name>/review</command-name><command-args>src</command-args>"}}
+{"type": "summary", "aiTitle": "로그인 버그 수정"}
+{"type":"assistant","timestamp":"잘린 줄
