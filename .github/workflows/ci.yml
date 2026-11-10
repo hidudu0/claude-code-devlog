@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        # 22 는 engines 하한(타입 제거가 기본으로 켜진 첫 LTS), 24 는 현재 LTS
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - name: 빌드 결과물로 실행
+        run: |
+          node dist/cli.js --version
+          node dist/cli.js render test/fixtures/session.jsonl --tz Asia/Seoul | grep -q '^# 로그인 버그 수정$'
+      - name: 패키지에 dist 만 들어가는지 확인
+        run: |
+          npm pack --dry-run --json > pack.json
+          node -e "const [p]=require('./pack.json'); const bad=p.files.map(f=>f.path).filter(f=>!/^(dist\/|package\.json$|README\.md$|LICENSE$)/.test(f)); if (bad.length) { console.error(bad); process.exit(1) }"
