@@ -52,9 +52,14 @@ Claude Code로 일하면 "그때 왜 이렇게 고쳤지?"의 답이 대화에 �
 Node.js 22.18 이상이 필요하다. 런타임 의존성은 없다.
 
 ```sh
-npm install -g github:hidudu0/claude-code-devlog
-cc-devlog install            # ~/.claude/settings.json 에 Stop 훅 등록
+git clone https://github.com/hidudu0/claude-code-devlog.git
+cd claude-code-devlog
+npm ci                       # 빌드까지 같이 된다
+node dist/cli.js install     # ~/.claude/settings.json 에 Stop 훅 등록
+npm link                     # (선택) 어디서든 cc-devlog 로 실행
 ```
+
+훅에는 `node` 와 `dist/cli.js` 의 절대 경로가 들어간다. 폴더를 옮기면 `install` 을 다시 실행한다.
 
 `install` 은 기존 설정과 다른 훅을 그대로 두고 Stop 훅 하나만 더한다. 바꾸기 전 파일은 `settings.json.bak` 으로 남는다. 여러 번 실행해도 한 번만 들어간다. 무엇이 바뀌는지 먼저 보려면 `--dry-run` 을 붙인다.
 

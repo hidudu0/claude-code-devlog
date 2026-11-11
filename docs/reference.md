@@ -37,7 +37,7 @@ Claude Code 설정 파일에 Stop 훅을 등록한다.
   "otherStopHooks": [],
   "path": "/Users/me/.claude/settings.json",
   "backup": "/Users/me/.claude/settings.json.bak",
-  "command": "\"/usr/local/bin/node\" \"/usr/local/lib/node_modules/claude-code-devlog/dist/cli.js\" hook",
+  "command": "\"/usr/local/bin/node\" \"/Users/me/claude-code-devlog/dist/cli.js\" hook",
   "dryRun": false
 }
 ```
